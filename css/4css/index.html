@@ -1,0 +1,15 @@
+4. Units: px, %, em, rem, vw, vh
+What & When
+px — absolute pixels (good for small UI elements).
+% — relative to parent (good for fluid layouts).
+em — relative to element's font-size (cascading).
+rem — relative to root (html) font-size (consistent scaling).
+vw/vh — viewport width/height (useful for full-screen sections).
+Example:
+html { font-size: 16px; } /* 1rem = 16px */
+h1 { font-size: 2rem; }   /* 32px */
+p { font-size: 1rem; }    /* 16px */
+.container { width: 80%; max-width: 1200px; }
+.full { height: 100vh; }  /* full viewport height */
+Lab
+Build a container that is 80% wide and center it. Make headings scale with rem.
