@@ -1,0 +1,298 @@
+🟢 1. Basics of Programming & JavaScript Introduction
+
+What is JavaScript
+
+How JS runs (browser, Node.js)
+
+Setting up environment (VS Code + Browser Console)
+
+Writing your first JS program (console.log("Hello World"))
+
+
+
+---
+
+🟢 2. Variables and Data Types
+
+What are variables
+
+Declaring variables: var, let, const
+
+Naming rules and conventions
+
+Primitive data types:
+
+Number
+
+String
+
+Boolean
+
+Null
+
+Undefined
+
+BigInt
+
+Symbol
+
+
+Checking type using typeof
+
+
+🧩 Example:
+
+let name = "Ritvik";
+let age = 20;
+let isStudent = true;
+console.log(typeof age); // number
+
+
+---
+
+🟢 3. Operators
+
+Arithmetic: +, -, *, /, %, **
+
+Assignment: =, +=, -=, etc.
+
+Comparison: ==, ===, !=, <, >
+
+Logical: &&, ||, !
+
+Ternary operator condition ? true : false
+
+
+🧩 Example:
+
+let marks = 85;
+let result = marks >= 35 ? "Pass" : "Fail";
+console.log(result);
+
+
+---
+
+🟢 4. Conditional Statements
+
+if, else if, else
+
+switch statement
+
+
+🧩 Example:
+
+let color = "red";
+if (color === "red") console.log("Stop!");
+else if (color === "green") console.log("Go!");
+else console.log("Wait!");
+
+
+---
+
+🟢 5. Loops
+
+for loop
+
+while loop
+
+do...while loop
+
+break and continue
+
+
+🧩 Example:
+
+for (let i = 1; i <= 5; i++) {
+  console.log("Count:", i);
+}
+
+
+---
+
+🟢 6. Functions
+
+Declaring a function
+
+Function parameters & return value
+
+Function expressions
+
+Arrow functions
+
+
+🧩 Example:
+
+function greet(name) {
+  return `Hello ${name}`;
+}
+console.log(greet("Ritvik"));
+
+const add = (a, b) => a + b;
+console.log(add(2, 3));
+
+
+---
+
+🟢 7. Arrays
+
+Creating arrays
+
+Accessing elements
+
+Array methods:
+
+push(), pop(), shift(), unshift()
+
+forEach(), map(), filter(), reduce()
+
+
+
+🧩 Example:
+
+let numbers = [1, 2, 3, 4];
+numbers.push(5);
+console.log(numbers.map(n => n * 2)); // [2,4,6,8,10]
+
+
+---
+
+🟢 8. Objects
+
+Object syntax { key: value }
+
+Accessing values using dot & bracket notation
+
+Adding/removing properties
+
+Nested objects
+
+
+🧩 Example:
+
+const student = { name: "Ritvik", age: 20, course: "AI" };
+console.log(student.name);
+
+
+---
+
+🟢 9. Strings
+
+String methods:
+
+length, toUpperCase(), toLowerCase()
+
+slice(), substring(), replace(), split()
+
+
+Template literals (`Hello ${name}`)
+
+
+🧩 Example:
+
+let text = "JavaScript";
+console.log(text.toUpperCase());
+
+
+---
+
+🟢 10. Date and Math
+
+Working with Date objects
+
+Common Math methods (Math.floor, Math.random, Math.max, etc.)
+
+
+🧩 Example:
+
+let today = new Date();
+console.log(today.getFullYear());
+console.log(Math.floor(Math.random() * 10));
+
+
+---
+
+🟢 11. DOM Manipulation (for Web)
+
+What is DOM
+
+Selecting elements: getElementById, querySelector
+
+Changing text, styles, attributes
+
+Event listeners: onclick, addEventListener
+
+
+🧩 Example:
+
+<button id="btn">Click</button>
+<script>
+document.getElementById("btn").addEventListener("click", () => {
+  alert("Button clicked!");
+});
+</script>
+
+
+---
+
+🟢 12. ES6 Features
+
+let & const (scopes)
+
+Template literals
+
+Destructuring (arrays, objects)
+
+Spread/rest operators
+
+Default parameters
+
+
+🧩 Example:
+
+const {name, age} = {name:"Ritvik", age:20};
+const nums = [1,2,3];
+const newNums = [...nums, 4];
+
+
+---
+
+🟢 13. Asynchronous JavaScript
+
+setTimeout, setInterval
+
+Callbacks
+
+Promises
+
+async / await
+
+
+🧩 Example:
+
+function getData() {
+  return new Promise(resolve => setTimeout(() => resolve("Done!"), 1000));
+}
+async function run() {
+  const result = await getData();
+  console.log(result);
+}
+run();
+
+
+---
+
+🟢 14. JSON and APIs
+
+What is JSON
+
+JSON.parse() and JSON.stringify()
+
+Fetching data using fetch() API
+
+
+🧩 Example:
+
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(res => res.json())
+  .then(data => console.log(data));
+
