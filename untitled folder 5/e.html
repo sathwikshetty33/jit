@@ -1,0 +1,10 @@
+<button id="remove">Remove</button>
+<div id="card">This card will be removed</div>
+
+<script>
+document.getElementById('remove').addEventListener('click', () => {
+  const card = document.getElementById('card');
+  card.remove(); // modern: directly remove node
+  // alternative: card.parentNode.removeChild(card);
+});
+</script>

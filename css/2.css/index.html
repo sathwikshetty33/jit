@@ -21,16 +21,25 @@ Build a small form. Style inputs using attribute selectors and add a hover style
     <title>Document</title>
     <style>
       /* selectors */
-.btn { padding: 8px 12px; border-radius: 6px; }
+/* .btn { padding: 8px 12px; border-radius: 6px; }
 .primary { background-color: #28a745; color: white; }
 #submit { font-weight: bold; }
 .btn:hover { opacity: 0.9; }
-#cancel { background-color: #dc3545; color: white; }
-
+#cancel { background-color: #dc3545; color: white; } */
+#submit{
+    color: green;
+}
+#cancel{
+    color: red;
+}
+.redclass{
+    background-color: red;
+}
     </style>
 </head>
 <body>
-    <button class="btn primary" id="submit">Submit</button>
-    <button id="cancel" class="btn">Cancel</button>
+    <button  id="submit">Submit</button>
+    <button  class="redclass">Cancel</button>
+    <button  class="redclass">Reset</button>
 </body>
 </html>

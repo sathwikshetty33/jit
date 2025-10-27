@@ -1,0 +1,14 @@
+<div id="list"></div>
+
+<script>
+const list = document.getElementById('list');
+const ul = document.createElement('ul');
+
+['Apple','Banana','Cherry'].forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item;
+  ul.appendChild(li);
+});
+
+list.appendChild(ul);
+</script>
