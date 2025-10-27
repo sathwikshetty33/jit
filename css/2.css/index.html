@@ -1,0 +1,36 @@
+2. CSS Syntax & Selectors
+What: Selector → declaration block { property: value; }.
+Selectors
+Type selector: p
+Class selector: .card
+ID selector: #main
+Descendant: .nav a
+Child: ul > li
+Attribute: input[type="text"]
+Pseudo-classes: a:hover, input:focus
+Pseudo-elements: p::first-line, ::before, ::after
+
+Lab
+Build a small form. Style inputs using attribute selectors and add a hover style for buttons.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* selectors */
+.btn { padding: 8px 12px; border-radius: 6px; }
+.primary { background-color: #28a745; color: white; }
+#submit { font-weight: bold; }
+.btn:hover { opacity: 0.9; }
+#cancel { background-color: #dc3545; color: white; }
+
+    </style>
+</head>
+<body>
+    <button class="btn primary" id="submit">Submit</button>
+    <button id="cancel" class="btn">Cancel</button>
+</body>
+</html>
