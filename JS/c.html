@@ -1,0 +1,16 @@
+<button id="btn">Toggle highlight</button>
+<p id="para">Some text</p>
+
+<script>
+const btn = document.getElementById('btn');
+const para = document.getElementById('para');
+
+btn.addEventListener('click', () => {
+  para.classList.toggle('highlight'); // adds if missing, removes if present
+});
+</script>
+
+<!-- CSS -->
+<style>
+.highlight { background:red; border-left: 4px solid gold; padding: 4px; }
+</style>
