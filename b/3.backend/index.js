@@ -5,7 +5,7 @@ const app = express();
 app.get('/', (req, res) => {
   res.send('Welcome to Express Backend!');
 });
-
+ 
 app.get('/hello', (req, res) => {
   res.send('GET request received!');
 });
