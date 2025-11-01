@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Layout - GRID</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: white;
+            height: 100vh;
+            /* GRID: Body uses grid to create rows for header and main content */
+            display: grid;
+            grid-template-rows: auto 1fr; /* Header auto height, content takes remaining */
+        }
+
+        /* GRID: Header uses grid to create 3 columns for logo, search, and user section */
+        .header {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px; /* Left 200px, center flexible, right 200px */
+            align-items: center; /* Vertically centers all grid items */
+            gap: 20px;
+            padding: 10px 16px;
+            background-color: #212121;
+        }
+
+        /* GRID: Logo section uses grid for icon and text alignment */
+        .logo {
+            display: grid;
+            grid-template-columns: auto 1fr; /* Icon auto width, text takes rest */
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #ff0000;
+            border-radius: 4px;
+        }
+
+        /* GRID: Search bar uses grid for input and button layout */
+        .search {
+            display: grid;
+            grid-template-columns: 1fr auto; /* Input takes space, button auto width */
+            max-width: 600px;
+            justify-self: center; /* Centers the search in its grid cell */
+        }
+
+        .search input {
+            padding: 10px 12px;
+            background-color: #121212;
+            border: 1px solid #303030;
+            border-radius: 40px 0 0 40px;
+            color: white;
+        }
+
+        .search button {
+            width: 64px;
+            background-color: #303030;
+            border: none;
+            border-radius: 0 40px 40px 0;
+            cursor: pointer;
+        }
+
+        /* GRID: User section arranges icons in columns */
+        .user-section {
+            display: grid;
+            grid-template-columns: repeat(3, auto); /* 3 columns with auto width */
+            gap: 24px;
+            justify-content: end; /* Aligns items to the right */
+            align-items: center;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background-color: #606060;
+            border-radius: 4px;
+        }
+
+        .profile {
+            width: 32px;
+            height: 32px;
+            background-color: #ff0000;
+            border-radius: 50%;
+        }
+
+        /* GRID: Main container creates 2 columns for sidebar and content */
+        .main-container {
+            display: grid;
+            grid-template-columns: 240px 1fr; /* Sidebar fixed 240px, content flexible */
+            overflow: hidden;
+        }
+
+        /* GRID: Sidebar uses grid for vertical menu layout */
+        .sidebar {
+            background-color: #212121;
+            padding: 12px 0;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr; /* Single column */
+            grid-auto-rows: auto; /* Each row auto height */
+            gap: 2px;
+            align-content: start; /* Aligns items to top */
+        }
+
+        .sidebar-item {
+            padding: 10px 24px;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover {
+            background-color: #3f3f3f;
+        }
+
+        /* GRID: Content area uses grid for responsive video layout */
+        .content {
+            padding: 24px;
+            overflow-y: auto;
+            display: grid;
+            /* Creates as many columns as fit, each minimum 300px, maximum equal width */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px; /* Space between grid items */
+            align-content: start; /* Aligns grid rows to top */
+        }
+
+        /* GRID: Each video card uses grid for internal structure */
+        .video-card {
+            display: grid;
+            grid-template-rows: auto 1fr; /* Thumbnail auto, info takes remaining */
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 16/9; /* Maintains 16:9 video ratio */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+        }
+
+        /* GRID: Video info section uses grid for avatar and text columns */
+        .video-info {
+            display: grid;
+            grid-template-columns: 36px 1fr; /* Avatar fixed, text flexible */
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            background-color: #ff0000;
+            border-radius: 50%;
+        }
+
+        /* GRID: Text container uses grid for vertical stacking */
+        .video-text {
+            display: grid;
+            grid-template-rows: auto auto auto; /* 3 rows for title, channel, views */
+            gap: 4px;
+            align-content: start; /* Aligns content to top */
+        }
+
+        .video-title {
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .video-channel {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .video-views {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Responsive: Adjust grid columns for smaller screens */
+        @media (max-width: 1200px) {
+            .content {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr; /* Single column, sidebar hidden */
+            }
+            .sidebar {
+                display: none; /* Hide sidebar on small screens */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                grid-template-columns: 1fr; /* Single column header */
+                gap: 10px;
+            }
+            .search {
+                justify-self: stretch; /* Full width search */
+            }
+            .user-section {
+                justify-content: center; /* Center icons */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <span>VideoTube</span>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <button>🔍</button>
+        </div>
+        <div class="user-section">
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="profile"></div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-item">🏠 Home</div>
+            <div class="sidebar-item">🔥 Trending</div>
+            <div class="sidebar-item">📚 Subscriptions</div>
+            <div class="sidebar-item">📖 Library</div>
+            <div class="sidebar-item">⏱️ History</div>
+            <div class="sidebar-item">▶️ Your Videos</div>
+            <div class="sidebar-item">⏰ Watch Later</div>
+            <div class="sidebar-item">👍 Liked Videos</div>
+        </div>
+
+        <!-- CONTENT AREA WITH VIDEO CARDS -->
+        <div class="content">
+            <!-- Each video card uses grid internally -->
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Video Title Goes Here</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">1M views • 2 days ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Another Video Title</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">500K views • 1 week ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Interesting Video Content</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">2M views • 3 days ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Tutorial Video</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">750K views • 5 days ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Amazing Content Here</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">3M views • 1 day ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Educational Video</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">1.5M views • 4 days ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Entertainment Video</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">900K views • 6 days ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="avatar"></div>
+                    <div class="video-text">
+                        <div class="video-title">Music Video</div>
+                        <div class="video-channel">Channel Name</div>
+                        <div class="video-views">5M views • 2 weeks ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
